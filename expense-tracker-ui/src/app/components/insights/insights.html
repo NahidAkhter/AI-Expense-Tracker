@@ -1,0 +1,146 @@
+<div class="insights-page">
+    <div class="page-header">
+        <h1>AI-Powered Insights</h1>
+        <p>Smart analysis of your spending patterns and recommendations</p>
+    </div>
+
+    <!-- Insights Generator -->
+    <div class="insights-generator-card">
+        <div class="generator-header">
+            <h2>🤖 Generate Insights</h2>
+            <div class="expense-count">
+                Analyzing {{ expenseCount }} expenses
+            </div>
+        </div>
+
+        <p class="generator-description">
+            Get AI-powered analysis of your spending habits, categorization accuracy,
+            and personalized recommendations to optimize your finances.
+        </p>
+
+        <div class="generator-actions">
+            <button (click)="generateInsights()" [disabled]="generatingInsights || expenseCount === 0"
+                class="btn btn-primary btn-lg">
+                <span *ngIf="generatingInsights" class="loading"></span>
+                {{ generatingInsights ? 'Analyzing...' : 'Generate AI Insights' }}
+            </button>
+
+            <div *ngIf="expenseCount === 0" class="warning-message">
+                💡 Add some expenses first to generate insights!
+            </div>
+        </div>
+    </div>
+
+    <!-- Insights Display -->
+    <div *ngIf="insights" class="insights-display">
+        <div class="insights-header">
+            <h2>Your Spending Analysis</h2>
+            <button (click)="copyInsights()" class="btn btn-outline btn-sm">
+                📋 Copy Insights
+            </button>
+        </div>
+
+        <div class="insights-content">
+            <div class="insight-text">
+                {{ insights }}
+            </div>
+        </div>
+
+        <div class="insights-actions">
+            <button (click)="regenerateInsights()" [disabled]="generatingInsights" class="btn btn-secondary">
+                🔄 Regenerate
+            </button>
+            <button (click)="shareInsights()" class="btn btn-outline">
+                📤 Share
+            </button>
+        </div>
+    </div>
+
+    <!-- Sample Insights (when no data) -->
+    <div *ngIf="!insights && expenseCount === 0" class="sample-insights">
+        <h3>Example AI Insights</h3>
+        <div class="sample-content">
+            <p>Here's what AI insights might look like with your data:</p>
+
+            <div class="sample-insight">
+                <h4>🎯 Spending Patterns</h4>
+                <p>"I notice 35% of your spending is on food delivery. Consider meal prepping to save ~$150/month."</p>
+            </div>
+
+            <div class="sample-insight">
+                <h4>💡 Smart Recommendations</h4>
+                <p>"Your transportation costs spiked this month. Carpooling 2 days/week could save ~$80/month."</p>
+            </div>
+
+            <div class="sample-insight">
+                <h4>📈 Optimization Tips</h4>
+                <p>"Entertainment subscriptions total $45/month. You might consolidate similar services."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div *ngIf="expenseCount > 0" class="statistics-grid">
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-content">
+                <h3>Total Expenses</h3>
+                <p class="stat-value">{{ expenseCount }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-content">
+                <h3>Total Spent</h3>
+                <p class="stat-value">{{ totalAmount | currency:'USD':'symbol':'1.2-2' }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-content">
+                <h3>Average Monthly</h3>
+                <p class="stat-value">{{ monthlyAverage | currency:'USD':'symbol':'1.2-2' }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-content">
+                <h3>Top Category</h3>
+                <p class="stat-value">{{ topCategory || 'N/A' }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Distribution -->
+    <div *ngIf="expenseCount > 0" class="category-distribution">
+        <h3>Spending Distribution</h3>
+        <div class="distribution-chart">
+            <div *ngFor="let category of categoryDistribution" class="distribution-item">
+                <div class="distribution-header">
+                    <span class="category-name">{{ category.name }}</span>
+                    <span class="category-percentage">{{ category.percentage }}%</span>
+                </div>
+                <div class="distribution-bar">
+                    <div class="distribution-fill" [style.width.%]="category.percentage"
+                        [class]="'fill-' + category.name.toLowerCase()">
+                    </div>
+                </div>
+                <div class="distribution-amount">
+                    {{ category.amount | currency:'USD':'symbol':'1.2-2' }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="generatingInsights" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>AI is analyzing your spending...</h3>
+            <p>This may take a few moments as we process your financial data</p>
+        </div>
+    </div>
+</div>

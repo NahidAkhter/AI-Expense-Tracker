@@ -1,0 +1,97 @@
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1>Expense Dashboard</h1>
+        <p>Overview of your spending and financial insights</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+        <div class="summary-card total-card">
+            <div class="card-icon">💰</div>
+            <div class="card-content">
+                <h3>Total Spent</h3>
+                <p class="amount">{{ summary?.total | currency:'USD':'symbol':'1.2-2' }}</p>
+            </div>
+        </div>
+
+        <div class="summary-card expense-count-card">
+            <div class="card-icon">📊</div>
+            <div class="card-content">
+                <h3>Total Expenses</h3>
+                <p class="count">{{ expenseCount }}</p>
+            </div>
+        </div>
+
+        <div class="summary-card average-card">
+            <div class="card-icon">📈</div>
+            <div class="card-content">
+                <h3>Average per Expense</h3>
+                <p class="amount">{{ averageExpense | currency:'USD':'symbol':'1.2-2' }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Breakdown -->
+    <div class="dashboard-section">
+        <h2>Spending by Category</h2>
+        <div class="category-breakdown" *ngIf="categoryData.length > 0; else noData">
+            <div *ngFor="let category of categoryData" class="category-item">
+                <div class="category-header">
+                    <span class="category-name">{{ category.name }}</span>
+                    <span class="category-amount">{{ category.amount | currency:'USD':'symbol':'1.2-2' }}</span>
+                </div>
+                <div class="category-bar">
+                    <div class="category-progress" [style.width.%]="category.percentage"
+                        [class]="'progress-' + category.name.toLowerCase()">
+                    </div>
+                </div>
+                <div class="category-percentage">{{ category.percentage }}%</div>
+            </div>
+        </div>
+        <ng-template #noData>
+            <div class="empty-state">
+                <p>No expenses yet. <a routerLink="/expenses">Add your first expense</a> to see insights!</p>
+            </div>
+        </ng-template>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="dashboard-section">
+        <h2>Quick Actions</h2>
+        <div class="quick-actions">
+            <button class="action-btn primary" routerLink="/expenses">
+                ➕ Add New Expense
+            </button>
+            <button class="action-btn secondary" routerLink="/insights">
+                🤖 Get AI Insights
+            </button>
+            <button class="action-btn outline" (click)="loadSampleData()" [disabled]="loading">
+                {{ loading ? 'Loading...' : '📁 Load Sample Data' }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Recent Expenses -->
+    <div class="dashboard-section">
+        <div class="section-header">
+            <h2>Recent Expenses</h2>
+            <a routerLink="/expenses" class="view-all">View All →</a>
+        </div>
+        <div *ngIf="recentExpenses.length > 0; else noRecent" class="recent-expenses">
+            <div *ngFor="let expense of recentExpenses" class="recent-expense-item">
+                <div class="expense-info">
+                    <span class="expense-desc">{{ expense.description }}</span>
+                    <span class="expense-category">{{ expense.category }}</span>
+                </div>
+                <div class="expense-amount">
+                    {{ expense.amount | currency:'USD':'symbol':'1.2-2' }}
+                </div>
+            </div>
+        </div>
+        <ng-template #noRecent>
+            <div class="empty-state">
+                <p>No recent expenses. <a routerLink="/expenses">Add your first expense</a> to get started!</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.8'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+
+group = 'com.ai.expense'
+version = '0.0.1-SNAPSHOT'
+description = 'ai expense tracker'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url='https://repo.spring.io/milestone' }
+	maven { url='https://repo.spring.io/snapshot' }
+}
+
+ext {
+	set('springAiVersion', "1.1.0")
+}
+
+dependencies {
+	// Use Gradle platform to import Spring Boot's dependency BOM so starter artifacts get versions
+	implementation platform('org.springframework.boot:spring-boot-dependencies:3.5.8')
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring AI Chat client for ChatClient symbol - version managed by BOM
+	implementation("org.springframework.ai:spring-ai-client-chat")
+
+	developmentOnly 'org.springframework.boot:spring-boot-docker-compose:3.5.8'
+
+	implementation 'org.postgresql:postgresql'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:3.5.8'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Use H2 in-memory database for tests so they don't require a running PostgreSQL instance.
+	testRuntimeOnly 'com.h2database:h2'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+	}
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+bootJar {
+	archiveFileName = 'expense-tracker.jar'
+}

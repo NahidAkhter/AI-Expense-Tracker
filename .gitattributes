@@ -1,0 +1,13 @@
+# Normalize all text files; use LF in repo, convert as needed on checkout
+* text=auto
+
+# Common project files - keep LF
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.gradle text eol=lf
+*.java text eol=lf
+*.kt text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf
+*.gitattributes text eol=lf

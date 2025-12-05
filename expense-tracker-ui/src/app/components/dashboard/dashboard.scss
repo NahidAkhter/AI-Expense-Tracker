@@ -1,0 +1,279 @@
+.dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.card-icon {
+    font-size: 2rem;
+}
+
+.card-content h3 {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.amount,
+.count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.dashboard-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-section h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.category-breakdown {
+    space-y: 1rem;
+}
+
+.category-item {
+    margin-bottom: 1rem;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.category-name {
+    font-weight: 500;
+    color: #374151;
+    text-transform: capitalize;
+}
+
+.category-amount {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.category-bar {
+    height: 8px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.category-progress {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.category-percentage {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.progress-food {
+    background: #ef4444;
+}
+
+.progress-transport {
+    background: #3b82f6;
+}
+
+.progress-entertainment {
+    background: #8b5cf6;
+}
+
+.progress-shopping {
+    background: #f59e0b;
+}
+
+.progress-bills {
+    background: #10b981;
+}
+
+.progress-health {
+    background: #ec4899;
+}
+
+.progress-other {
+    background: #6b7280;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.view-all {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.quick-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &.primary {
+        background: #3b82f6;
+        color: white;
+
+        &:hover:not(:disabled) {
+            background: #2563eb;
+        }
+    }
+
+    &.secondary {
+        background: #8b5cf6;
+        color: white;
+
+        &:hover:not(:disabled) {
+            background: #7c3aed;
+        }
+    }
+
+    &.outline {
+        background: transparent;
+        color: #374151;
+        border: 2px solid #d1d5db;
+
+        &:hover:not(:disabled) {
+            border-color: #9ca3af;
+            background: #f9fafb;
+        }
+    }
+}
+
+.recent-expenses {
+    space-y: 0.75rem;
+}
+
+.recent-expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.expense-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense-desc {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.expense-category {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: capitalize;
+}
+
+.expense-amount {
+    font-weight: 600;
+    color: #ef4444;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+}
+
+.empty-state a {
+    color: #3b82f6;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 768px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        text-align: center;
+    }
+}

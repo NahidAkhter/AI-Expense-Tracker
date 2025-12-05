@@ -1,0 +1,96 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: expense-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_AI_OPENAI_API_KEY: 12345TEST
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: secret
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true
+      LOGGING_LEVEL_COM_EXPENSE: DEBUG
+      SERVER_PORT: 8080
+      # Ensure SQL init runs in container (explicitly set here to avoid relying solely on application.properties)
+      SPRING_SQL_INIT_MODE: always
+      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: 'true'
+      SPRING_SQL_INIT_CONTINUE_ON_ERROR: 'true'
+      # Explicitly point to the data.sql packaged in the jar
+      SPRING_SQL_INIT_DATA_LOCATIONS: classpath:data.sql
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - expense-backend-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/api/expenses/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      - ./logs:/app/logs
+
+  frontend:
+    build:
+      context: ../expense-tracker-ui
+    container_name: expense-frontend
+    ports:
+      - "4200:80"
+      - "4201:443"
+    environment:
+      NODE_ENV: production
+      API_URL: http://backend:8080
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - expense-backend-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  postgres:
+    image: postgres
+    container_name: expense-postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - expense-backend-network
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: myuser
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: expense-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@expense.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    networks:
+      - expense-backend-network
+    depends_on:
+      - postgres
+
+networks:
+  expense-backend-network:
+    driver: bridge

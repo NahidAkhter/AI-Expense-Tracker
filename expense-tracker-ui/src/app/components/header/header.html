@@ -1,0 +1,14 @@
+<header class="header">
+      <div class="container">
+        <h1 class="logo">💰 Smart Expense Tracker</h1>
+        <nav class="nav">
+          <a 
+            *ngFor="let link of navLinks"
+            [routerLink]="link.path" 
+            routerLinkActive="active"
+            class="nav-link">
+            {{ link.label }}
+          </a>
+        </nav>
+      </div>
+    </header>
