@@ -44,6 +44,13 @@ dependencies {
 	// Use H2 in-memory database for tests so they don't require a running PostgreSQL instance.
 	testRuntimeOnly 'com.h2database:h2'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Lombok for generating boilerplate code
+	compileOnly 'org.projectlombok:lombok:1.18.32'
+	annotationProcessor 'org.projectlombok:lombok:1.18.32'
+	// Enable Lombok for tests as well
+	testCompileOnly 'org.projectlombok:lombok:1.18.32'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 }
 
 dependencyManagement {
