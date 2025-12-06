@@ -2,16 +2,14 @@
 A production-ready, cloud-deployable full-stack application featuring AI-driven expense categorization, intelligent spending insights, and comprehensive financial tracking.
 
 🏗️ Architecture Overview
-text
-┌─────────────────────────────────────────────────────────┐
-│                 Docker Container Stack                   │
-├─────────────┬─────────────┬─────────────────────────────┤
-│   Angular   │  Spring Boot│     PostgreSQL              │
-│   (Nginx)   │   (Spring AI)│    (Data Persistence)      │
-│    4200     │    8080     │    5432                     │
-└─────────────┴─────────────┴─────────────────────────────┘
-                AI-Powered Categorization
-                Smart Spending Insights
+
+<img width="527" height="228" alt="image" src="https://github.com/user-attachments/assets/e9adff3f-8b97-4c9b-a79f-00339dd4b2db" />
+
+Angular: (Nginx)  4200 
+Spring Boot (Spring AI): 8080
+PostgreSQL (Data Persistence): 5432         
+AI-Powered Categorization
+Smart Spending Insights
 ✨ Core Features
 🤖 AI-Powered Categorization: Automatic expense classification using OpenAI GPT
 
