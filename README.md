@@ -67,3 +67,11 @@ Frontend: http://localhost:4200
 Backend API: http://localhost:8080/api
 
 Database: PostgreSQL on port 5432
+
+
+<img width="1896" height="978" alt="Dashboard" src="https://github.com/user-attachments/assets/35431fc6-714f-4555-9ced-65a9095d898f" />
+
+<img width="1910" height="962" alt="Expense" src="https://github.com/user-attachments/assets/345b4757-3f68-4e9c-b6fb-d7c97c1c732f" />
+
+<img width="1888" height="982" alt="AI-insights" src="https://github.com/user-attachments/assets/8098a016-999d-438e-88b0-218ad76eddcd" />
+
