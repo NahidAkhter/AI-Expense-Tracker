@@ -2,20 +2,27 @@
 A production-ready, cloud-deployable full-stack application featuring AI-driven expense categorization, intelligent spending insights, and comprehensive financial tracking.
 
 🏗️ Architecture Overview
---
-### System Architecture
+## 📊 System Architecture
 
-flowchart LR
-    subgraph Docker["Docker Container Stack"]
-        FE["Angular Frontend<br/>(Nginx)<br/>Port: 4200"]
-        BE["Spring Boot Backend<br/>(Spring AI)<br/>Port: 8080"]
-        DB["PostgreSQL<br/>Data Persistence<br/>Port: 5432"]
+```mermaid
+flowchart TB
+    User[User<br/>Web Browser]
+    
+    subgraph "Docker Container Stack"
+        Angular[Angular UI<br/>Nginx :4200]
+        SpringBoot[Spring Boot API<br/>Spring AI :8080]
+        Postgres[PostgreSQL<br/>:5432]
+        
+        Angular -- "HTTP/REST API" --> SpringBoot
+        SpringBoot -- "JDBC" --> Postgres
     end
-
-    FE -->|HTTP / REST| BE
-    BE -->|JPA / JDBC| DB
-
-    BE --> AI["AI-Powered Categorization<br/>Smart Spending Insights"]
+    
+    AI[External AI Services<br/>OpenAI / Gemini]
+    
+    User -- "Port 4200" --> Angular
+    User -- "Port 8080" --> SpringBoot
+    SpringBoot -- "AI API Calls" --> AI
+```
 
 The application is deployed using a Docker container stack consisting of:
 
@@ -106,4 +113,6 @@ Database: PostgreSQL on port 5432
 <img width="1910" height="962" alt="Expense" src="https://github.com/user-attachments/assets/345b4757-3f68-4e9c-b6fb-d7c97c1c732f" />
 
 <img width="1888" height="982" alt="AI-insights" src="https://github.com/user-attachments/assets/8098a016-999d-438e-88b0-218ad76eddcd" />
+
+
 
