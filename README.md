@@ -10,6 +10,18 @@ Spring Boot (Spring AI): 8080
 PostgreSQL (Data Persistence): 5432         
 AI-Powered Categorization
 Smart Spending Insights
+
+# TECH
+o	REST APIs
+o	Database integration
+o	Unit tests (JUnit/Mockito)
+o	Docker configuration
+•	Angular front-end with:
+o	RxJS implementation
+o	State management
+o	Component architecture
+
+
 ✨ Core Features
 🤖 AI-Powered Categorization: Automatic expense classification using OpenAI GPT
 
