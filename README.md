@@ -40,13 +40,6 @@ The backend leverages AI capabilities to deliver:
 - Smart spending insights
 
 
-
-Angular: (Nginx)  4200 
-Spring Boot (Spring AI): 8080
-PostgreSQL (Data Persistence): 5432         
-AI-Powered Categorization
-Smart Spending Insights
-
 ✨ Core Features
 ------------------
 
