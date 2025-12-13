@@ -1,4 +1,4 @@
-💰 Smart Expense Tracker - AI-Powered Financial Management
+# 💰 Smart Expense Tracker - AI-Powered Financial Management
 A production-ready, cloud-deployable full-stack application featuring AI-driven expense categorization, intelligent spending insights, and comprehensive financial tracking.
 
 🏗️ Architecture Overview
@@ -11,7 +11,8 @@ PostgreSQL (Data Persistence): 5432
 AI-Powered Categorization
 Smart Spending Insights
 
-# TECH
+Technology:
+------------
 o	REST APIs
 o	Database integration
 o	Unit tests (JUnit/Mockito)
