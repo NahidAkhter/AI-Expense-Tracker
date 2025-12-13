@@ -40,6 +40,28 @@ The backend leverages AI capabilities to deliver:
 - Smart spending insights
 
 
+Flow Diagram
+---
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as Angular UI
+    participant S as Spring Boot
+    participant D as PostgreSQL
+    participant AI as AI Services
+    
+    U->>A: HTTP Request
+    A->>S: API Call
+    S->>AI: AI Processing Request
+    AI-->>S: AI Insights
+    S->>D: Database Query
+    D-->>S: Query Results
+    S-->>A: JSON Response
+    A-->>U: Updated UI
+```
+
+
+
 ✨ Core Features
 ------------------
 
