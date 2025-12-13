@@ -11,18 +11,6 @@ PostgreSQL (Data Persistence): 5432
 AI-Powered Categorization
 Smart Spending Insights
 
-Technology:
-------------
-o	REST APIs
-o	Database integration
-o	Unit tests (JUnit/Mockito)
-o	Docker configuration
-•	Angular front-end with:
-o	RxJS implementation
-o	State management
-o	Component architecture
-
-
 ✨ Core Features
 ------------------
 
@@ -32,12 +20,12 @@ o	Component architecture
 
 📱 Modern UI: Angular 17 with reactive programming using RxJS
 
-
 🐳 Containerized: Complete Docker Compose setup for easy deployment
 
 📈 Real-time Updates: Reactive state management with BehaviorSubject
 
 🛠️ Technology Stack
+----------------------
 Component	Technology	Purpose
 Frontend	Angular 17, RxJS, Angular Material	Reactive UI with real-time updates
 Backend	Spring Boot 3.2, Spring AI, JPA	REST API with AI integration
@@ -47,6 +35,7 @@ Proxy	Nginx	Reverse proxy & static serving
 Container	Docker, Docker Compose	Containerization & orchestration
 
 🚀 Deployment Ready
+----------------------
 bash
 # Single command to deploy entire stack
 <img width="711" height="166" alt="image" src="https://github.com/user-attachments/assets/ba860ed4-2977-4708-8dbb-8c4fd365ad6b" />
@@ -56,6 +45,7 @@ bash
 Production-ready Docker configuration
 
 Environment-based configuration management
+----------------------------------------
 
 Health checks for all services
 
@@ -64,6 +54,7 @@ Persistent volumes for database
 Multi-stage Docker builds for optimized images
 
 🔧 Key Technical Highlights
+------------------------------
 AI Integration: Spring AI with OpenAI for intelligent expense categorization
 
 Reactive Architecture: RxJS observables for seamless data flow
@@ -73,10 +64,6 @@ Containerization: Complete Docker setup with service discovery
 RESTful Design: Clean API with proper HTTP status codes & error handling
 
 Database Migrations: Automatic schema updates with Spring Data JPA
-
-Security: JWT-based authentication with password encryption
-
-Demo Credentials:
 
 Frontend: http://localhost:4200
 
