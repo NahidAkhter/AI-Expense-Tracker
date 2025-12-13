@@ -2,6 +2,8 @@
 A production-ready, cloud-deployable full-stack application featuring AI-driven expense categorization, intelligent spending insights, and comprehensive financial tracking.
 
 🏗️ Architecture Overview
+--
+### System Architecture
 
 flowchart LR
     subgraph Docker["Docker Container Stack"]
@@ -15,20 +17,21 @@ flowchart LR
 
     BE --> AI["AI-Powered Categorization<br/>Smart Spending Insights"]
 
-User
-  |
-  v
-Angular (Nginx :4200)
-  |
-  v
-Spring Boot (Spring AI :8080)
-  |
-  v
-PostgreSQL (:5432)
+The application is deployed using a Docker container stack consisting of:
 
-Spring AI
-  └── AI-powered categorization
-  └── Smart spending insights
+- **Angular Frontend**  
+  Served via **Nginx** on port `4200`
+
+- **Spring Boot Backend**  
+  Runs on port `8080`, integrates **Spring AI** for intelligent processing
+
+- **PostgreSQL Database**  
+  Provides persistent storage on port `5432`
+
+The backend leverages AI capabilities to deliver:
+- AI-powered transaction categorization
+- Smart spending insights
+
 
 
 Angular: (Nginx)  4200 
