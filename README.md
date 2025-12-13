@@ -34,6 +34,9 @@ Container	Docker, Docker Compose	Containerization & orchestration
 🚀 Deployment Ready
 bash
 # Single command to deploy entire stack
+<img width="711" height="166" alt="image" src="https://github.com/user-attachments/assets/ba860ed4-2977-4708-8dbb-8c4fd365ad6b" />
+
+
 docker-compose up -d
 Production-ready Docker configuration
 
