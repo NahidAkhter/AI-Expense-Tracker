@@ -24,6 +24,8 @@ o	Component architecture
 
 
 ✨ Core Features
+------------------
+
 🤖 AI-Powered Categorization: Automatic expense classification using OpenAI GPT
 
 📊 Smart Insights: AI-generated spending patterns and recommendations
