@@ -3,7 +3,33 @@ A production-ready, cloud-deployable full-stack application featuring AI-driven 
 
 🏗️ Architecture Overview
 
-<img width="527" height="228" alt="image" src="https://github.com/user-attachments/assets/e9adff3f-8b97-4c9b-a79f-00339dd4b2db" />
+flowchart LR
+    subgraph Docker["Docker Container Stack"]
+        FE["Angular Frontend<br/>(Nginx)<br/>Port: 4200"]
+        BE["Spring Boot Backend<br/>(Spring AI)<br/>Port: 8080"]
+        DB["PostgreSQL<br/>Data Persistence<br/>Port: 5432"]
+    end
+
+    FE -->|HTTP / REST| BE
+    BE -->|JPA / JDBC| DB
+
+    BE --> AI["AI-Powered Categorization<br/>Smart Spending Insights"]
+
+User
+  |
+  v
+Angular (Nginx :4200)
+  |
+  v
+Spring Boot (Spring AI :8080)
+  |
+  v
+PostgreSQL (:5432)
+
+Spring AI
+  └── AI-powered categorization
+  └── Smart spending insights
+
 
 Angular: (Nginx)  4200 
 Spring Boot (Spring AI): 8080
